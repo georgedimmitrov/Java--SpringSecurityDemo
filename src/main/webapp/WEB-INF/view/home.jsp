@@ -18,6 +18,22 @@
 		Your role(s): <security:authentication property="principal.authorities" />
 	</p>
 	
+	<security:authorize access="hasRole('MANAGER')">
+		<!-- /leaders for managers -->
+		<p>
+			<a href="${pageContext.request.contextPath}/leaders">Ladership Meeting</a>
+			(Only for Manager peeps)
+		</p>
+	</security:authorize>
+	
+	<security:authorize access="hasRole('ADMIN')">
+		<!-- /systems for admins -->
+		<p>
+			<a href="${pageContext.request.contextPath}/systems">IT Systems Meeting</a>
+			(Only for Admin peeps)
+		</p>
+	</security:authorize>
+	
 	<!-- Logout button -->
 	<form:form action="${pageContext.request.contextPath}/logout" method="POST">
 		
