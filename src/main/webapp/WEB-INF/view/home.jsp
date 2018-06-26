@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -10,7 +11,12 @@
 
 	<h2>Home Page</h2>
 	
-	<p>Welcome!</p>
+	<p>Welcome, <security:authentication property="principal.username" />!</p>
+	
+	<!-- display user name and role -->
+	<p>
+		Your role(s): <security:authentication property="principal.authorities" />
+	</p>
 	
 	<!-- Logout button -->
 	<form:form action="${pageContext.request.contextPath}/logout" method="POST">
